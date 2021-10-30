@@ -1,0 +1,37 @@
+.modal-container{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  .modal-container__body{
+	height: 35%;
+	width: 20%;
+	margin-top: 10%;
+	margin-left: 40%;
+	border-radius: 3px;
+	padding: 40px;
+	.modal-container__title{
+	  text-align: center;
+	}
+	.modal-container__text{
+	  line-height: 2em;
+	  font-size: 18px;
+	}
+	.dialog-button{
+	  padding-top: 30px;
+	  display: flex;
+	  justify-content: space-around;
+	  .dialog-button__butt{
+
+	  }
+	}
+  }
+}
+mat-form-field {
+  margin-right: 12px;
+  width: 100%;
+}
+//input.ng-touched.ng-invalid {border:solid red 2px;}
+//input.ng-touched.ng-valid {border:solid green 2px;}

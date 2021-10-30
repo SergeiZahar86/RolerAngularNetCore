@@ -1,0 +1,53 @@
+<div class="modal-container">
+	<div class="modal-container__body mat-app-background">
+		<h1 class="modal-container__title">Регистрация нового пользователя</h1>
+		<form [formGroup]="myForm"
+			  novalidate
+			  (ngSubmit)="submit()">
+			<mat-form-field appearance="fill">
+				<mat-label>User Name</mat-label>
+				<input matInput
+					   type="text"
+					   placeholder="User Name"
+					   name="userName"
+					   required=""
+					   pattern="[a-zA-Z]{4,}"
+					   formControlName="userName">
+			</mat-form-field>
+			<div *ngIf="myForm.controls['userName'].invalid && myForm.controls['userName'].touched"
+				 class="alert alert-danger">
+				Имя должно быть не менее 4 символов
+			</div>
+			<mat-form-field appearance="fill">
+				<mat-label>Password</mat-label>
+				<!--[(ngModel)]="userName"  -  двухсторонняя привязка		-->
+				<input matInput
+					   type="text"
+					   placeholder="Password"
+					   name="userPassword"
+					   required=""
+					   pattern="[a-zA-Z0-9]{4,}"
+					   formControlName="userPassword">
+			</mat-form-field>
+			<div *ngIf="myForm.controls['userPassword'].invalid && myForm.controls['userPassword'].touched"
+				 class="alert alert-danger">
+				Пароль должен содержать только символы a-z ,A-Z, 0-9 и быть не менее 4 символов
+			</div>
+			<div class="dialog-button">
+				<button mat-button
+						mat-raised-button
+						color="primary"
+						class="dialog-button__butt"
+						(click)="RegisterMolal()"
+						[disabled]="myForm.invalid">
+					Зарегистрировать
+				</button>
+				<button mat-button
+						class="dialog-button__butt"
+						(click)="CloseMolal()">
+					Отмена
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

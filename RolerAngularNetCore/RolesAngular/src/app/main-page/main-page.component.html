@@ -1,0 +1,60 @@
+<h1 appBold>main</h1>
+<div class="panel">
+	<div><input [(ngModel)]="name"
+				placeholder="Модель"/>
+		<button (click)="addItem(name)">Добавить</button>
+	</div>
+	<table>
+		<tr *ngFor="let item of items">
+			<td>{{item}}</td>
+		</tr>
+	</table>
+</div>
+<table mat-table
+	   [dataSource]="dataSource"
+	   class="mat-elevation-z8 table-main-page">
+
+	<!--- Note that these columns can be defined in any order.
+		  The actual rendered columns are set as a property on the row definition" -->
+
+	<!-- Position Column -->
+	<ng-container matColumnDef="id">
+		<th mat-header-cell
+			*matHeaderCellDef> Id
+		</th>
+		<td mat-cell
+			*matCellDef="let element"> {{element.id}} </td>
+	</ng-container>
+
+	<!-- Name Column -->
+	<ng-container matColumnDef="name">
+		<th mat-header-cell
+			*matHeaderCellDef> Name
+		</th>
+		<td mat-cell
+			*matCellDef="let element"> {{element.user.userName}} </td>
+	</ng-container>
+
+	<!-- Weight Column -->
+	<ng-container matColumnDef="startTime">
+		<th mat-header-cell
+			*matHeaderCellDef> Start Time
+		</th>
+		<td mat-cell
+			*matCellDef="let element"> {{element.startTime | date: "medium" : "ru"}} </td>
+	</ng-container>
+
+	<!-- Symbol Column -->
+	<ng-container matColumnDef="endTime">
+		<th mat-header-cell
+			*matHeaderCellDef> End Time
+		</th>
+		<td mat-cell
+			*matCellDef="let element"> {{element.endTime  | date: "medium" : "ru"}} </td>
+	</ng-container>
+
+	<tr mat-header-row
+		*matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row
+		*matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

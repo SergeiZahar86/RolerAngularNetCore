@@ -1,0 +1,86 @@
+<p>
+	<mat-toolbar color="primary">
+		<!--		<router-outlet name="popup"></router-outlet>-->
+		<button mat-icon-button
+				class="example-icon"
+				aria-label="Example icon-button with menu icon">
+			<mat-icon>menu</mat-icon>
+		</button>
+		<span>My App</span>
+		<span class="example-spacer"></span>
+
+		<a mat-button
+		   [routerLink]="[{ outlets: {popup: ['login']}}]"
+		   class="butt">Show popap</a>
+		<a mat-button
+		   [routerLink]="[{ outlets: {popup: null }}]"
+		   class="butt">Hide popap</a>
+		<a mat-button
+		   routerLink=""
+		   class="butt"
+		   routerLinkActive="active"
+		   [routerLinkActiveOptions]="{exact: true}"
+		>Main</a>
+		<a mat-button
+		   routerLink="/times"
+		   class="butt"
+		   routerLinkActive="active"
+		>Times</a>
+		<a mat-button
+		   routerLink="/callback"
+		   class="butt"
+		   routerLinkActive="active"
+		>Callback</a>
+		<button mat-raised-button
+				class="butt"
+				(click)="LogIn()"
+		>Log In
+		</button>
+		<button mat-raised-button
+				class="butt"
+		>Refresh
+		</button>
+		<button mat-raised-button
+				class="butt"
+				(click)="LogOut()"
+		>Log Out
+		</button>
+		<button mat-raised-button
+				class="butt"
+				(click)="ShowModalRegister()"
+		>Register
+		</button>
+		<button mat-raised-button
+				class="butt"
+				(click)="ShowModalReactiveRegister()"
+		>ReactiveRegister
+		</button>
+		<button mat-icon-button
+				class="example-icon favorite-icon"
+				aria-label="Example icon-button with heart icon">
+			<mat-icon>favorite</mat-icon>
+		</button>
+		<button mat-icon-button
+				class="example-icon"
+				aria-label="Example icon-button with share icon">
+			<mat-icon>share</mat-icon>
+		</button>
+	</mat-toolbar>
+</p>
+
+<!-- (isClosed)="closeModalNewGame($event)"    - передача события из дочернего элемента  -->
+<!-- [userName]="name"                         - передача данных в дочерний компонент    -->
+<app-register-modal
+	*ngIf="isModalRegister"
+	(isClosed)="CloseModalRegister($event)"
+	(isRegister)="Register($event)"
+	[userName]="name"
+	[userPassword]="password"
+></app-register-modal>
+<app-reactive-register-modal
+	*ngIf="isModalReactiveRegister"
+	(isClosed)="CloseModalReactiveRegister($event)"
+	(isRegister)="Register($event)"
+	[userName]="name"
+	[userPassword]="password"
+></app-reactive-register-modal>
